@@ -5,12 +5,23 @@ This is a docker-compose.yml file that defines three services: phpenv, mariadb, 
 
 To get started, make sure you have Docker and Docker Compose installed on your machine. Then, follow these steps:
 
-    Clone this repository to your local machine.
-    Open a terminal and navigate to the root of the cloned repository.
-    Run the following command: docker-compose up.
-    Wait for the containers to start up.
-    Access your application at http://localhost:8080.
-    Access phpMyAdmin at http://localhost:8089.
+1. Clone this repository to your local machine.
+2. Open a terminal and navigate to the root of the cloned repository.
+3. Run the following command:
+```bash
+docker-compose up --build -d
+```
+
+4. Wait for the containers to start up.
+5. For testing only **DON'T** use it for production. 
+run the following command:
+```bash
+chmod -R 777 app 
+echo "<?php phpinfo();" > ./app/index.php
+```
+
+6. Access your application at http://localhost:8080.
+7. Access phpMyAdmin at http://localhost:8089.
 
 # Services
 ## phpenv
