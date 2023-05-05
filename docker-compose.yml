@@ -1,48 +1,38 @@
-version: "3.9"
+version: '3.9'
 services:
-  phpenv:
-    build: .
-    ports:
-      - "8080:80" 
-    volumes:
-      - ./app:/var/www/html
-      - ./config:/usr/local/etc/php/
-      -	./config/apache2:/var/log/apache2
-    depends_on:
-      - mariadb
-    networks:
-      - dev-env
-  mariadb:
-    image: mariadb
-    restart: always
-    ports:
-      - "3360:3306"
-    environment:
-      MARIADB_ROOT_PASSWORD: password
-      MARIADB_USER: admin
-      MARIADB_PASSWORD: password
-      MARIADB_DATABASE: school
-    networks:
-      - dev-env      
-  phpmyadmin:
-    image: phpmyadmin
-    environment:
-      - WEB_DOCUMENT_ROOT=/app
-      - PMA_ARBITRARY=1443
-      - PMA_HOST=mariadb
-    restart: always
-    depends_on:
-      - mariadb
-    volumes:
-      - ./config/phpmyadmin/php.ini:/usr/local/etc/php/php.ini
-    ports:
-      - 8089:80
-    environment:
-      - PMA_ARBITRARY=1
-    networks:
-      - dev-env
-volumes:
-  mysqldata: {}
-networks:
-  dev-env: {}
+    apache:
+        container_name: Apache
+        build:
+            context: C:\project\webhost\php\
+            dockerfile: C:\project\webhost\Dockerfile
+        depends_on:
+            - db
+        volumes:
+            - C:\project\webhost\php\html:/var/www/html/
+        ports:
+            - 8000:80
+    db:
+        container_name: db
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: mydata
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: password
+        ports:
+            - "9906:3306"
+    phpmyadmin:
+        container_name: phpmyadmin
+        image: phpmyadmin
+        ports:
+            - '8080:80'
+        restart: always
+        environment:
+            PMA_HOST: db
+            PMA_USER: root
+            PMA_PASSWORD: password
+        depends_on:
+            - db
+
 
