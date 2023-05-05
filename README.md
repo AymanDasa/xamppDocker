@@ -23,7 +23,7 @@ copy index.php file to C:\project\webhost\php\html
 ## apache
 
 This service uses the official php 8.0.28-apache image and sets the working directory to C:\project\webhost\php\html. 
-- It also maps the local ./app directory to /var/www/html inside the container.
+- It also maps the local C:\project\webhost\php\html  directory to /var/www/html inside the container.
 
 
 ## db
