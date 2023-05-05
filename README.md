@@ -20,17 +20,19 @@ copy index.php file to C:\project\webhost\php\html
 7. Access phpMyAdmin at http://localhost:8080.
 
 # Services
-## phpenv
+## apache
 
 This service uses the official php 8.0.28-apache image and sets the working directory to C:\project\webhost\php\html. 
 - It also maps the local ./app directory to /var/www/html inside the container.
 
 
-## mariadb
+## db
 
 This service uses the official MariaDB image and sets the root password to "password". 
 - It also creates a database called mydata, and a user called admin with the password "password". 
 - This service maps port 9906 to 3306 and is part of the dev-env network.
+
+
 ## phpmyadmin
 
 This service uses the official phpMyAdmin image and sets the document root to /app. 
