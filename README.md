@@ -35,6 +35,6 @@ This service uses the official MariaDB image and sets the root password to "pass
 
 ## phpmyadmin
 
-This service uses the official phpMyAdmin image and sets the document root to /app. 
+This service uses the official phpMyAdmin image. 
 - It also depends on the mariadb service and maps port 8080 to port 80. 
  
