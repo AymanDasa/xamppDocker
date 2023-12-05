@@ -11,6 +11,10 @@ To get started, make sure you have Docker and Docker Compose installed on your m
 ```bash
 docker-compose up -d
 ```
+**OR**
+```bash
+docker build . -f Dockerfile
+```
 
 4. Wait for the containers to start up.
 5. For testing only **DON'T** use it for production. 
